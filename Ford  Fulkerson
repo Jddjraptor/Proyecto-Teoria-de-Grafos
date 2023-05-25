@@ -1,0 +1,24 @@
+# Número grande como infinito
+inf = 1e10
+
+def flujo_maximo(grafo, fuente, destino):
+  flujo_maximo = 0
+  padre = bfs(grafo, fuente, destino)
+  while camino:
+    limite = inf
+    v = destino
+    while v != fuente:
+        u = padre[s]
+        flujo_camino = min(limite, grafo[u][v])
+        v = padre[v]
+    flujo_maximo += flujo_camino
+
+    v = destino
+    while v != fuente:
+        u = padre[v]
+        grafo[u][v] -= flujo_camino
+        grafo[v][u] += flujo_camino
+        v = padre[v]
+
+    camino = bfs(grafo, fuente, destino)
+  return flujo_maximo
